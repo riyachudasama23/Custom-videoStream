@@ -12,6 +12,7 @@ import { authToken, createMeeting } from "./API";
 import ReactPlayer from "react-player";
 import Container from "./components/Container";
 import JoinScreen from "./components/JoinScreen";
+import ParticipantView from "./components/ParticipantView";
 
 function App() {
   const [meetingId, setMeetingId] = useState(null);

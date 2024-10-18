@@ -1,6 +1,7 @@
 import { useMemo } from "react";
-import { useMeeting } from "@videosdk.live/react-sdk"; // Adjust the package name as needed
-import ParticipantView from "./components/ParticipantView";
+import { useMeeting, Constants } from "@videosdk.live/react-sdk"; // Adjust the package name as needed
+import ParticipantView from "./ParticipantView";
+import Controls from "./Controls";
 
 function SpeakerView() {
   //Get the participants and HLS State from useMeeting

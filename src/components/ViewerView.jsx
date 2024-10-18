@@ -1,6 +1,7 @@
 //importing hls.js
 import Hls from "hls.js";
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef } from "react";
+import { useMeeting, Constants } from "@videosdk.live/react-sdk"; // Adjust the package name as needed
 
 function ViewerView() {
   // States to store downstream url and current HLS state

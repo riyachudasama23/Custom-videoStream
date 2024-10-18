@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef } from "react";
-import { useParticipant } from "@videosdk.live/react-sdk"; // Assuming you're using VideoSDK
+import { useParticipant } from "@videosdk.live/react-sdk";
 import ReactPlayer from "react-player";
 
 function ParticipantView(props) {
