@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import {
+  MeetingProvider,
+  MeetingConsumer,
+  useMeeting,
+  useParticipant,
+  Constants,
+} from "@videosdk.live/react-sdk";
+
+import { authToken, createMeeting } from "./API";
+import ReactPlayer from "react-player";
+import Container from "./components/Container";
+import JoinScreen from "./components/JoinScreen";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [meetingId, setMeetingId] = useState(null);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  //State to handle the mode of the participant i.e. CONFERENCE or VIEWER
+  const [mode, setMode] = useState("CONFERENCE");
+
+  //You have to get the MeetingId from the API created earlier
+  const getMeetingAndToken = async (id) => {
+    const meetingId =
+      id == null ? await createMeeting({ token: authToken }) : id;
+    setMeetingId(meetingId);
+  };
+
+  const onMeetingLeave = () => {
+    setMeetingId(null);
+  };
+
+  return authToken && meetingId ? (
+    <MeetingProvider
+      config={{
+        meetingId,
+        micEnabled: true,
+        webcamEnabled: true,
+        name: "Riya Chudasama",
+        //This will be the mode of the participant CONFERENCE or VIEWER
+        mode: mode,
+      }}
+      token={authToken}
+    >
+      <MeetingConsumer>
+        {() => (
+          <Container meetingId={meetingId} onMeetingLeave={onMeetingLeave} />
+        )}
+      </MeetingConsumer>
+    </MeetingProvider>
+  ) : (
+    <JoinScreen getMeetingAndToken={getMeetingAndToken} setMode={setMode} />
+  );
 }
 
-export default App
+export default App;
