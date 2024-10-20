@@ -1,6 +1,6 @@
 # VideoStream
 
-VideoStream is a live streaming application built using React and VideoSDK. The app allows users to host and join live streaming sessions seamlessly, providing an interactive experience for both speakers and viewers.
+VideoStream is a live streaming application built using React and [VideoSDK](https://www.videosdk.live/). The app allows users to host and join live streaming sessions seamlessly, providing an interactive experience for both speakers and viewers.
 
 ## Features
 
@@ -9,6 +9,7 @@ VideoStream is a live streaming application built using React and VideoSDK. The 
 - **User Roles**: Differentiate between speakers (who can control the stream) and viewers (who can only watch).
 - **Adaptive Streaming**: Automatically adjusts the video quality based on the viewer's internet connection.
 - **Interactive UI**: A simple and clean interface for users to join or create meetings.
+- **Toggle Microphone/Camera**: Users can mute/unmute their microphone and turn their camera on/off.
 
 ## Prerequisites
 
@@ -27,5 +28,19 @@ Follow these steps to get your live streaming app up and running:
 ```bash
 git clone https://github.com/riyachudasama23/VideoStream.git
 cd VideoStream
+```
 
+### 2. Install dependencies:
+```bash
+npm install
+```
 
+### 4. Replace `api-key` in `API.js` with your actual API key from VideoSDK.live.
+
+### 5. Run the app:
+```bash
+npm run dev
+```
+
+## License
+This repository is licensed under the MIT License.
