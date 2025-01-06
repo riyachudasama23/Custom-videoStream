@@ -2,6 +2,7 @@
 import Hls from "hls.js";
 import { useEffect, useRef } from "react";
 import { useMeeting, Constants } from "@videosdk.live/react-sdk"; // Adjust the package name as needed
+import ILSView from "./ILSView";
 
 function ViewerView() {
   // States to store downstream url and current HLS state
@@ -62,7 +63,7 @@ function ViewerView() {
               autoPlay={true}
               controls
               style={{ width: "100%", height: "100%" }}
-              playsinline
+              // playsinline
               playsInline
               muted={true}
               playing
@@ -70,6 +71,7 @@ function ViewerView() {
                 console.log(err, "hls video error");
               }}
             ></video>
+            <ILSView/>
           </div>
         )
       )}
