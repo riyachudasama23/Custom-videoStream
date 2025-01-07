@@ -115,3 +115,19 @@ button:focus-visible {
     margin-left: -50px;
   }
 }
+
+/* LiveIndicator.css */
+.live-indicator {
+  position: absolute;
+  /* top: 10px;
+  left: 10px; */
+  background-color: white;
+  color: red;
+  padding: 10px 30px;
+  /* border-radius: 5px; */
+  font-weight: bolder;
+  z-index: 1000; /* Ensure it appears above other elements */
+  font-size: 25px;
+  letter-spacing: 0.9px;
+}
+

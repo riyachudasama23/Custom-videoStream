@@ -3,6 +3,8 @@ import Hls from "hls.js";
 import { useEffect, useRef } from "react";
 import { useMeeting, Constants } from "@videosdk.live/react-sdk"; // Adjust the package name as needed
 import ILSView from "./ILSView";
+import LiveIndicator from "./LiveIndicator";
+import Recording from "./Recording";
 
 function ViewerView() {
   // States to store downstream url and current HLS state
@@ -48,6 +50,7 @@ function ViewerView() {
   }, [hlsUrls, hlsState, playerRef.current]);
 
   return (
+    
     <div>
       {/* Showing message if HLS is not started or is stopped by HOST */}
       {hlsState != "HLS_PLAYABLE" ? (
@@ -57,13 +60,17 @@ function ViewerView() {
       ) : (
         hlsState == "HLS_PLAYABLE" && (
           <div>
+            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+            {/* Show "LIVE" indicator */}
+              <LiveIndicator />
+            </div>
             <video
               ref={playerRef}
               id="hlsPlayer"
               autoPlay={true}
               controls
               style={{ width: "100%", height: "100%" }}
-              // playsinline
+              //playsinline
               playsInline
               muted={true}
               playing
@@ -72,6 +79,7 @@ function ViewerView() {
               }}
             ></video>
             <ILSView/>
+            <Recording/>
           </div>
         )
       )}
